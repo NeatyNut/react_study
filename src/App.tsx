@@ -1,20 +1,19 @@
-import { Container } from 'react-bootstrap';
-import { Route, Routes } from 'react-router-dom';
 import HeaderNavbar from './components/HeaderNavbar';
 import HomePage from './pages/HomePage';
-import ProjectsPage from './pages/ProjectsPage';
+import CompanyPage from './pages/CompanyPage';
+import { Navigate, Route, Routes } from 'react-router-dom';
+import './App.css';
 
 function App() {
   return (
     <>
       <HeaderNavbar />
-      <main className="app-main">
-        <Container>
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/projects" element={<ProjectsPage />} />
-          </Routes>
-        </Container>
+      <main>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/company/:companyId" element={<CompanyPage />} />
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Routes>
       </main>
     </>
   );
